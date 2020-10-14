@@ -15,6 +15,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareHashtag;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
@@ -218,8 +219,13 @@ public class SocialSharePlugin
         final File media = new File(mediaPath);
         final Uri uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".social.share.fileprovider",
                 media);
+
+
         final SharePhoto photo = new SharePhoto.Builder().setImageUrl(uri).setCaption(caption).build();
-        final SharePhotoContent content = new SharePhotoContent.Builder().addPhoto(photo).build();
+
+        final ShareHashtag hashtag = new ShareHashtag.Builder().setHashtag("#inveneta").build();
+        
+        final SharePhotoContent content = new SharePhotoContent.Builder().setShareHashtag(hashtag).addPhoto(photo).build();
         final ShareDialog shareDialog = new ShareDialog(activity);
         shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
             @Override
