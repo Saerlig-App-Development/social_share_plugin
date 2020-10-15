@@ -1,6 +1,7 @@
 #import "SocialSharePlugin.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import <FBSDKShareKit/FBSDKHashtag.h>
 //#import <TwitterKit/TWTRKit.h>
 
 @implementation SocialSharePlugin {
@@ -15,7 +16,8 @@
             binaryMessenger:[registrar messenger]];
   SocialSharePlugin* instance = [[SocialSharePlugin alloc] initWithChannel:channel];
   [registrar addApplicationDelegate:instance];
-  [registrar addMethodCallDelegate:instance channel:channel];
+  [registrar addMethodCallDelegate:instance
+                           channel:channel];
 }
 
 - (instancetype)initWithChannel:(FlutterMethodChannel*)channel {
@@ -128,6 +130,10 @@
     photo.image = [[UIImage alloc] initWithContentsOfFile:imagePath];
     FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
     content.photos = @[photo];
+
+    // set the hashtag
+    content.hashtag = [FBSDKHashtag hashtagWithString:@"#inveneta"];
+
     UIViewController* controller = [UIApplication sharedApplication].delegate.window.rootViewController;
     [FBSDKShareDialog showFromViewController:controller withContent:content delegate:self];
 }

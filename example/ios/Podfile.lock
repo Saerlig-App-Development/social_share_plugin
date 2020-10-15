@@ -1,0 +1,53 @@
+PODS:
+  - FBSDKCoreKit (7.1.1):
+    - FBSDKCoreKit/Basics (= 7.1.1)
+    - FBSDKCoreKit/Core (= 7.1.1)
+  - FBSDKCoreKit/Basics (7.1.1)
+  - FBSDKCoreKit/Core (7.1.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKShareKit (7.1.1):
+    - FBSDKShareKit/Share (= 7.1.1)
+  - FBSDKShareKit/Share (7.1.1):
+    - FBSDKCoreKit (~> 7.1.1)
+  - Flutter (1.0.0)
+  - flutter_plugin_android_lifecycle (0.0.1):
+    - Flutter
+  - image_picker (0.0.1):
+    - Flutter
+  - social_share_plugin (0.3.1):
+    - FBSDKCoreKit
+    - FBSDKShareKit
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_plugin_android_lifecycle (from `.symlinks/plugins/flutter_plugin_android_lifecycle/ios`)
+  - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - social_share_plugin (from `.symlinks/plugins/social_share_plugin/ios`)
+
+SPEC REPOS:
+  trunk:
+    - FBSDKCoreKit
+    - FBSDKShareKit
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_plugin_android_lifecycle:
+    :path: ".symlinks/plugins/flutter_plugin_android_lifecycle/ios"
+  image_picker:
+    :path: ".symlinks/plugins/image_picker/ios"
+  social_share_plugin:
+    :path: ".symlinks/plugins/social_share_plugin/ios"
+
+SPEC CHECKSUMS:
+  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
+  FBSDKShareKit: 00a055c1999b099596e00212dd1c0600c6697019
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_plugin_android_lifecycle: dc0b544e129eebb77a6bfb1239d4d1c673a60a35
+  image_picker: 9c3312491f862b28d21ecd8fdf0ee14e601b3f09
+  social_share_plugin: f9dc03c1137b137e6efb1f3608f449c4cb153a7a
+
+PODFILE CHECKSUM: a50c3f2835975afc9337cc3c3b2df82711ade0c7
+
+COCOAPODS: 1.9.3

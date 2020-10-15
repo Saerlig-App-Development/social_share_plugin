@@ -7,7 +7,8 @@ typedef Future<dynamic> OnErrorHandler(String error);
 typedef Future<dynamic> OnSuccessHandler(String postId);
 
 class SocialSharePlugin {
-  static const MethodChannel _channel = const MethodChannel('social_share_plugin');
+  static const MethodChannel _channel =
+      const MethodChannel('social_share_plugin');
 
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
@@ -39,6 +40,7 @@ class SocialSharePlugin {
   static Future<void> shareToFeedFacebook({
     String caption,
     @required String path,
+    String hashtag,
     OnSuccessHandler onSuccess,
     OnCancelHandler onCancel,
     OnErrorHandler onError,
@@ -58,6 +60,7 @@ class SocialSharePlugin {
     return _channel.invokeMethod('shareToFeedFacebook', <String, dynamic>{
       'caption': caption,
       'path': path,
+      'hashtag': hashtag,
     });
   }
 

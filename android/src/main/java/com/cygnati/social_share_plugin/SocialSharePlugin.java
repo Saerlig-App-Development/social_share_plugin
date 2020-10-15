@@ -148,7 +148,7 @@ public class SocialSharePlugin
             case "shareToFeedFacebook":
                 try {
                     pm.getPackageInfo(FACEBOOK_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
-                    facebookShare(call.<String>argument("caption"), call.<String>argument("path"));
+                    facebookShare(call.<String>argument("caption"), call.<String>argument("path"), call.<String>argument("hashtag"));
                     result.success(true);
                 } catch (PackageManager.NameNotFoundException e) {
                     openPlayStore(FACEBOOK_PACKAGE_NAME);
@@ -215,7 +215,7 @@ public class SocialSharePlugin
         activity.startActivityForResult(chooser, INSTAGRAM_REQUEST_CODE);
     }
 
-    private void facebookShare(String caption, String mediaPath) {
+    private void facebookShare(String caption, String mediaPath, String hashtag) {
         final File media = new File(mediaPath);
         final Uri uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".social.share.fileprovider",
                 media);
@@ -223,9 +223,9 @@ public class SocialSharePlugin
 
         final SharePhoto photo = new SharePhoto.Builder().setImageUrl(uri).setCaption(caption).build();
 
-        final ShareHashtag hashtag = new ShareHashtag.Builder().setHashtag("#inveneta").build();
-        
-        final SharePhotoContent content = new SharePhotoContent.Builder().setShareHashtag(hashtag).addPhoto(photo).build();
+        final ShareHashtag shareHashtag = new ShareHashtag.Builder().setHashtag("#" + hashtag).build();
+
+        final SharePhotoContent content = new SharePhotoContent.Builder().setShareHashtag(shareHashtag).addPhoto(photo).build();
         final ShareDialog shareDialog = new ShareDialog(activity);
         shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
             @Override
