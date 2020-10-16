@@ -132,7 +132,7 @@
     content.photos = @[photo];
 
     // set the hashtag
-    content.hashtag = [FBSDKHashtag hashtagWithString:@"#inveneta"];
+    content.hashtag = [FBSDKHashtag hashtagWithString:@"#lenguavenetapp"];
 
     UIViewController* controller = [UIApplication sharedApplication].delegate.window.rootViewController;
     [FBSDKShareDialog showFromViewController:controller withContent:content delegate:self];
